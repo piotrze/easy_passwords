@@ -13,14 +13,15 @@ gem easy_passwords
 ```
 
 ## Goals
-Passwords are easily to read
-You can setup max password length in characters(useful when sending password in sms message)
+- Passwords are easily to read
+- You can setup max password length in characters(useful when sending password in sms message)
 
 ## Usage
 
 ### Ruby App
-You can `require` it within your app:
-```
+You can ```require``` it within your app:
+
+```ruby
 require 'rubygems'
 require 'easy_passwords'
 
