@@ -1,24 +1,24 @@
-require 'pwqgen/wordlist'
+require 'easy_passwords/wordlist'
 require 'securerandom'
 
-# Public: Pwqgen is a Ruby implementation of passwdqc's pwqgen password
+# Public: EasyPasswords is a Ruby implementation of passwdqc's easy_passwords password
 # generator.
 #
 # Examples
 #
-#   Pwqgen.generate
+#   EasyPasswords.generate
 #   # => "Unrest3Male!trout"
 #
-#   Pwqgen.new.generate
+#   EasyPasswords.new.generate
 #   # => "Obese6Perish6viola"
 #
-# 	Pwqgen::Generator.new.generate
+# 	EasyPasswords::Generator.new.generate
 # 	# => "Crime2Behave=growth"
 #
-# 	Pwqgen::Generator.new.generate 4
+# 	EasyPasswords::Generator.new.generate 4
 # 	# => "Caesar-Madam7draft8choose"
 #
-module Pwqgen
+module EasyPasswords
 
 	# Public: Returns a random generated password string.
 	# 
@@ -26,10 +26,10 @@ module Pwqgen
 	# 
 	# Example
 	# 
-	# 	Pwqgen.generate 2
+	# 	EasyPasswords.generate 2
 	# 	# => "Loyal8atomic"
 	# 
-	# 	Pwqgen.generate
+	# 	EasyPasswords.generate
 	# 	# => "Gate*Abound&hull"
 	#
 	# Returns a password string.

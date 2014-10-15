@@ -1,40 +1,34 @@
-# pwqgen.rb
+# easy_passwords.rb
 
-[![Build Status](https://secure.travis-ci.org/iphoting/pwqgen.rb.png)](http://travis-ci.org/iphoting/pwqgen.rb) [![Dependency Status](https://gemnasium.com/iphoting/pwqgen.rb.png)](https://gemnasium.com/iphoting/pwqgen.rb)
+[![Build Status](https://secure.travis-ci.org/iphoting/easy_passwords.rb.png)](http://travis-ci.org/iphoting/easy_passwords.rb) [![Dependency Status](https://gemnasium.com/iphoting/easy_passwords.rb.png)](https://gemnasium.com/iphoting/easy_passwords.rb)
 
-pwqgen.rb is a Ruby implementation of passwdqc's pwqgen, a random pronouncable password generator.
+easy_passwords.rb is a Ruby implementation of passwdqc's easy_passwords, a random pronouncable password generator.
 
 ## Installation
 
 ```
-gem install pwqgen.rb
+gem install easy_passwords
 ```
+
+```
+gem easy_passwords
+
+## Goals
+Passwords are easily to read
+You can setup max password length in characters(usefull when sending password in sms message)
 
 ## Usage
-
-### CLI
-You can generate a random password from the command line.
-```
-$ pwqgen.rb --help
-Usage: pwqgen.rb [options] [<length>]
-
-Options:
-  -h, --help      show this help message and exit
-  -v, --version   show version and exit
-
-<length>: Number of words in the passphrase. [default: 3]
-```
 
 ### Ruby App
 You can `require` it within your app:
 ```
 require 'rubygems'
-require 'pwqgen'
+require 'easy_passwords'
 
-p Pwqgen.generate             # => "Image&Both-action"
-p Pwqgen.generate 5           # => "Alaska_Union9Calf=domain&ever"
+p EasyPassword.generate             # => "Image&Both-action"
+p EasyPassword.generate 5           # => "Alaska_Union9Calf=domain&ever"
 
-pgen = Pwqgen.new             # => #<Pwqgen::Generator:0x9f6ec40 ...>
+pgen = EasyPassword.new             # => #<EasyPasswords::Generator:0x9f6ec40 ...>
 p pgen.generate               # => "String5Rebel+horse"
 p pgen.generate 2             # => "Easily2desist"
 ```
@@ -47,12 +41,7 @@ p pgen.generate 2             # => "Easily2desist"
 4. Push to the branch (`git push origin feature/my-new-feature`)
 5. Create new Pull Request
 
-## Related
-
-- A web-based demonstration is available on [Heroku](https://pwqgen.herokuapp.com/). ([Source](https://github.com/iphoting/pwqgen-web)).
-- Original C Implementation, <http://www.openwall.com/passwdqc/>.
-
 ## Credits
-
+- Based on gem https://github.com/iphoting/easy_passwords.rb
 - Original Design and C implementation from <http://www.openwall.com/passwdqc/> by Solar Designer.
 

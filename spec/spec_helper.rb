@@ -1,1 +1,1 @@
-require 'pwqgen'
+require 'easy_passwords'

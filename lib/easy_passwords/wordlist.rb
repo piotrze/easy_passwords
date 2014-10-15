@@ -56,7 +56,7 @@
 # characters will pass the minimum length check.  In other words, this
 # default assumes that no word is shorter than 3 characters.
 #
-module Pwqgen
+module EasyPasswords
 		class Generator
 			@@wordlist = [
 			"Adam",
