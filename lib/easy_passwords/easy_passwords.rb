@@ -7,34 +7,38 @@ require 'securerandom'
 # Examples
 #
 #   EasyPasswords.generate
-#   # => "Unrest3Male!trout"
+#   # => "merger*Hick$"
 #
 #   EasyPasswords.new.generate
-#   # => "Obese6Perish6viola"
+#   # => "employ7Royal"
 #
 # 	EasyPasswords::Generator.new.generate
-# 	# => "Crime2Behave=growth"
+# 	# => "Beige7Jacob2"
 #
 # 	EasyPasswords::Generator.new.generate 4
-# 	# => "Caesar-Madam7draft8choose"
+# 	# => "min5"
 #
 module EasyPasswords
 
-	# Public: Returns a random generated password string.
-	# 
-	# length - number of words used to create the passphrase.
-	# 
-	# Example
-	# 
-	# 	EasyPasswords.generate 2
-	# 	# => "Loyal8atomic"
-	# 
-	# 	EasyPasswords.generate
-	# 	# => "Gate*Abound&hull"
-	#
-	# Returns a password string.
-	def self.generate(length = 3)
-		self::Generator.new.generate length
+  DEFAULT_MAX_LENGTH = 12
+  MIN_WORD_LENGTH = 3
+  MAX_WORD_LENGTH = 6
+
+  # Public: Returns a random generated password string.
+  #
+  # max_length - max number of characters used in password, it could generate password shorter by 3 characters.
+  #
+  # Example
+  #
+  # 	generate 8
+  # 	# => "Fun=Crop"
+  #
+  # 	generate
+  # 	# => "spate7Coup"
+  #
+  # Returns a password string.
+	def self.generate(max_length = DEFAULT_MAX_LENGTH)
+		self::Generator.new.generate max_length
 	end
 
 	def self.new
@@ -51,26 +55,50 @@ module EasyPasswords
 
 		# Public: Returns a random generated password string.
 		# 
-		# length - number of words used to create the passphrase.
+		# max_length - max number of characters used in password, it could generate password shorter by 3 characters.
 		# 
 		# Example
 		# 
-		# 	generate 2
-		# 	# => "Loyal8atomic"
+		# 	generate 8
+		# 	# => "Fun=Crop"
 		# 
 		# 	generate
-		# 	# => "Gate*Abound&hull"
+		# 	# => "spate7Coup"
 		#
 		# Returns a password string.
-		def generate(length = 3)
-			output = Array.new
-			for i in 1..length
-				output << @@wordlist[@rand.random_number(@@wordlist_size)]
-				output[i-1] = output[i-1].capitalize if @rand.random_number(2)
+		def generate(max_length = EasyPasswords::DEFAULT_MAX_LENGTH)
+      raise "Password minimal length is #{EasyPasswords::MIN_WORD_LENGTH}" if max_length < EasyPasswords::MIN_WORD_LENGTH
+			output = ""
+      while output.size < (max_length - (EasyPasswords::MIN_WORD_LENGTH - 1))
+        output << random_word(choose_word_length(max_length, output.size))
 
-				output << @@separators[@rand.random_number(@@separators_size)] unless i == length
+				output << @@separators[@rand.random_number(@@separators_size)] if output.size < max_length
 			end
-			output.join
-		end
+			output
+    end
+
+    private
+
+    def choose_word_length(max_length, pass_size)
+      if pass_size == 0
+        if max_length < (EasyPasswords::MIN_WORD_LENGTH * 2 + 1)
+          max_length
+        else
+          max_length / 2
+        end
+      else
+        max_length - pass_size
+      end
+    end
+
+    def random_word(maxsize = EasyPasswords::MAX_WORD_LENGTH)
+      list = if maxsize < EasyPasswords::MAX_WORD_LENGTH
+        @@wordlist.select{|w| w.size <= maxsize }
+             else
+        @@wordlist
+             end
+      word = list[@rand.random_number(list.size)]
+			@rand.random_number(2) == 0 ? word.capitalize : word
+    end
 	end
 end

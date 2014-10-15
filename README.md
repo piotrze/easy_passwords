@@ -1,7 +1,5 @@
 # easy_passwords.rb
 
-[![Build Status](https://secure.travis-ci.org/iphoting/easy_passwords.rb.png)](http://travis-ci.org/iphoting/easy_passwords.rb) [![Dependency Status](https://gemnasium.com/iphoting/easy_passwords.rb.png)](https://gemnasium.com/iphoting/easy_passwords.rb)
-
 easy_passwords.rb is a Ruby implementation of passwdqc's easy_passwords, a random pronouncable password generator.
 
 ## Installation
@@ -12,10 +10,11 @@ gem install easy_passwords
 
 ```
 gem easy_passwords
+```
 
 ## Goals
 Passwords are easily to read
-You can setup max password length in characters(usefull when sending password in sms message)
+You can setup max password length in characters(useful when sending password in sms message)
 
 ## Usage
 
@@ -25,12 +24,14 @@ You can `require` it within your app:
 require 'rubygems'
 require 'easy_passwords'
 
-p EasyPassword.generate             # => "Image&Both-action"
-p EasyPassword.generate 5           # => "Alaska_Union9Calf=domain&ever"
+p EasyPassword.generate             # => "employ7Royal"
+p EasyPassword.generate 5           # => "Peach"
+p EasyPassword.generate 15          # => "soggy*Apart9Odd"
+p EasyPassword.generate 2           # => raise error, min length is 3
 
-pgen = EasyPassword.new             # => #<EasyPasswords::Generator:0x9f6ec40 ...>
-p pgen.generate               # => "String5Rebel+horse"
-p pgen.generate 2             # => "Easily2desist"
+gen = EasyPassword.new             # => #<EasyPasswords::Generator:0x9f6ec40 ...>
+p gen.generate               # => "employ7Royal"
+p gen.generate 15             # => "soggy*Apart9Odd"
 ```
 
 ## Contributing
@@ -42,6 +43,6 @@ p pgen.generate 2             # => "Easily2desist"
 5. Create new Pull Request
 
 ## Credits
-- Based on gem https://github.com/iphoting/easy_passwords.rb
+- Based on gem https://github.com/iphoting/pwqgen.rb
 - Original Design and C implementation from <http://www.openwall.com/passwdqc/> by Solar Designer.
 
