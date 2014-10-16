@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = 'easy_passwords'
   s.version     = EasyPasswords::VERSION
   s.summary     = "Easy passwords generator in Ruby"
-  s.description = "Easy password is a Ruby implementation of passwdqc's easy_passwords, a random pronouncable password generator. Don't use it for serious projects :)"
+  s.description = "Easy password is a Ruby implementation of passwdqc's easy_passwords, a random pronouncable password generator. Probably don't use it in banks."
   s.authors     = ["Pete"]
   s.email       = 'piotr.bliszczyk@gmail.com'
   s.homepage    = 'https://github.com/piotrze/easy_passwords'

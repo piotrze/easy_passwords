@@ -7,10 +7,10 @@ require 'securerandom'
 # Examples
 #
 #   EasyPasswords.generate
-#   # => "merger*Hick$"
+#   # => "merger4Hick_"
 #
 #   EasyPasswords.new.generate
-#   # => "employ7Royal"
+#   # => "employ-Royal"
 #
 # 	EasyPasswords::Generator.new.generate
 # 	# => "Beige7Jacob2"
@@ -23,22 +23,27 @@ module EasyPasswords
   DEFAULT_MAX_LENGTH = 12
   MIN_WORD_LENGTH = 3
   MAX_WORD_LENGTH = 6
+  SEPARATORS = "-_123456789"
 
   # Public: Returns a random generated password string.
   #
   # max_length - max number of characters used in password, it could generate password shorter by 3 characters.
+  # separators - list of separators as a String
   #
   # Example
   #
   # 	generate 8
-  # 	# => "Fun=Crop"
+  # 	# => "Fun-Crop"
+  #
+  # 	generate 8, '01'
+  # 	# => "Fun0Crop"
   #
   # 	generate
   # 	# => "spate7Coup"
   #
   # Returns a password string.
-	def self.generate(max_length = DEFAULT_MAX_LENGTH)
-		self::Generator.new.generate max_length
+	def self.generate(max_length = DEFAULT_MAX_LENGTH, separators = SEPARATORS)
+		self::Generator.new(separators).generate max_length
 	end
 
 	def self.new
@@ -46,9 +51,9 @@ module EasyPasswords
 	end
 
 	class Generator
-		def initialize
+		def initialize(separators = EasyPasswords::SEPARATORS)
 			@@wordlist_size = @@wordlist.length
-			@@separators = "-_!$&*+=23456789".split(//)
+			@@separators = separators
 			@@separators_size = @@separators.length
 			@rand = SecureRandom
 		end
@@ -60,7 +65,7 @@ module EasyPasswords
 		# Example
 		# 
 		# 	generate 8
-		# 	# => "Fun=Crop"
+		# 	# => "Fun_Crop"
 		# 
 		# 	generate
 		# 	# => "spate7Coup"
@@ -94,9 +99,9 @@ module EasyPasswords
     def random_word(maxsize = EasyPasswords::MAX_WORD_LENGTH)
       list = if maxsize < EasyPasswords::MAX_WORD_LENGTH
         @@wordlist.select{|w| w.size <= maxsize }
-             else
+      else
         @@wordlist
-             end
+      end
       word = list[@rand.random_number(list.size)]
 			@rand.random_number(2) == 0 ? word.capitalize : word
     end
