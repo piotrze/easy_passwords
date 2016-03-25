@@ -1,5 +1,7 @@
 # easy_passwords.rb
 
+[![Build Status](https://travis-ci.org/piotrze/easy_passwords.svg?branch=master)](https://travis-ci.org/piotrze/easy_passwords)
+
 easy_passwords.rb is a Ruby implementation of passwdqc's easy_passwords, a random pronouncable password generator.
 
 ## Installation
