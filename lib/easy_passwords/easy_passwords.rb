@@ -7,7 +7,7 @@ require 'securerandom'
 # Examples
 #
 #   EasyPasswords.generate
-#   # => "merger4Hick_"
+#   # => "merger4Hick"
 #
 #   EasyPasswords.new.generate
 #   # => "employ-Royal"
@@ -19,11 +19,10 @@ require 'securerandom'
 # 	# => "min5"
 #
 module EasyPasswords
-
   DEFAULT_MAX_LENGTH = 12
   MIN_WORD_LENGTH = 3
   MAX_WORD_LENGTH = 6
-  SEPARATORS = "-_123456789"
+  SEPARATORS = "-123456789"
 
   # Public: Returns a random generated password string.
   #
@@ -59,14 +58,14 @@ module EasyPasswords
 		end
 
 		# Public: Returns a random generated password string.
-		# 
+		#
 		# max_length - max number of characters used in password, it could generate password shorter by 3 characters.
-		# 
+		#
 		# Example
-		# 
+		#
 		# 	generate 8
 		# 	# => "Fun_Crop"
-		# 
+		#
 		# 	generate
 		# 	# => "spate7Coup"
 		#
