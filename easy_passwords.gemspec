@@ -10,12 +10,13 @@ Gem::Specification.new do |s|
   s.authors     = ["Pete"]
   s.email       = 'piotr.bliszczyk@gmail.com'
   s.homepage    = 'https://github.com/piotrze/easy_passwords'
+  s.license     = 'MIT'
 
   s.files       = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rake', '~> 0'
+  s.add_development_dependency 'rspec', '~> 0'
 end
